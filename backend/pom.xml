@@ -63,7 +63,20 @@
         <artifactId>junit-jupiter-engine</artifactId>
         <version>${junit.version}</version>
         <scope>test</scope>
-      </dependency>  </dependencies>
+      </dependency>
+      <dependency>
+          <groupId>org.postgresql</groupId>
+          <artifactId>postgresql</artifactId>
+          <version>42.7.3</version>
+      </dependency>
+      <dependency>
+          <groupId>jakarta.servlet</groupId>
+          <artifactId>jakarta.servlet-api</artifactId>
+          <version>6.1.0</version>
+      </dependency>
+
+
+  </dependencies>
 
   <build>
       <finalName>ROOT</finalName>
@@ -72,6 +85,9 @@
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-war-plugin</artifactId>
             <version>3.4.0</version>
+            <configuration>
+            <failOnMissingWebXml>false</failOnMissingWebXml>
+            </configuration>
         </plugin>
     </plugins>
   </build>
