@@ -1,4 +1,4 @@
-package org.ziro.backend;
+package org.ziro.backend.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -13,16 +13,18 @@ public class Point {
     public boolean isHit;
     public String startTime;
     public double executionTime;
+    public String creator;
 
     public Point() {}
 
-    public Point(double x, double y, double r, boolean isHit, String startTime, double executionTime) {
+    public Point(double x, double y, double r, boolean isHit, String startTime, double executionTime, String creator) {
         this.x = x;
         this.y = y;
         this.r = r;
         this.isHit = isHit;
         this.startTime = startTime;
         this.executionTime = executionTime;
+        this.creator = creator;
     }
 
     public double getX() {

@@ -8,8 +8,8 @@
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     <jta-data-source>java:jboss/datasources/PostgresDS</jta-data-source>
 
-    <class>org.ziro.backend.Point</class>
-    <class>org.ziro.backend.Users</class>
+    <class>org.ziro.backend.models.Point</class>
+    <class>org.ziro.backend.models.Users</class>
 
     <properties>
       <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>

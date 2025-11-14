@@ -1,4 +1,4 @@
-package org.ziro.backend;
+package org.ziro.backend.models;
 
 
 import jakarta.persistence.Entity;
@@ -8,7 +8,9 @@ import jakarta.persistence.*;
 public class Users {
     @Id
     private long id;
+    @Column(nullable = false, unique = true)
     private String login;
+    @Column(nullable = false)
     private String password;
 
     public Users() {}

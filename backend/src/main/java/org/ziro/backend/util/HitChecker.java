@@ -1,4 +1,4 @@
-package org.ziro.backend;
+package org.ziro.backend.util;
 
 public class HitChecker {
 
