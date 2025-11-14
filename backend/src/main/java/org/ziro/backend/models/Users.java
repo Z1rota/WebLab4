@@ -5,6 +5,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.*;
 
 @Entity
+@NamedQuery(
+        name = "Users.findByUsername",  // Уникальное имя-ярлык для этого запроса
+        query = "SELECT u FROM Users u WHERE u.login = :username" // Сам JPQL-запрос
+)
 public class Users {
     @Id
     private long id;
@@ -29,6 +33,7 @@ public class Users {
     public String getPassword() {
         return password;
     }
+
 
 
 }
