@@ -9,7 +9,7 @@
     <jta-data-source>java:jboss/datasources/PostgresDS</jta-data-source>
 
     <class>org.ziro.backend.Point</class>
-    <class>org.ziro.backend.User</class>
+    <class>org.ziro.backend.Users</class>
 
     <properties>
       <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
