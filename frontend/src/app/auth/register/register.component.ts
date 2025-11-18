@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import { CommonModule } from '@angular/common';
 import { AbstractControl, FormsModule, ValidationErrors } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -31,7 +32,7 @@ export function passwordValidator(control: AbstractControl): ValidationErrors | 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule ],
   templateUrl: './register.component.html',
   styleUrl: './register.css',
 })

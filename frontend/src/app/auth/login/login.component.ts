@@ -2,11 +2,13 @@ import {Component} from '@angular/core';
 import {Router} from "@angular/router";
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../auth.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
     selector: "app-login",
     standalone: true,
-    imports: [CommonModule, FormsModule],
+    imports: [CommonModule, FormsModule, RouterModule],
     templateUrl: "./login.component.html",
     styleUrls: ['./login.component.css']
 
@@ -20,7 +22,7 @@ export class LoginComponent {
     errorMessage="";
     isLoading = false;
 
-     constructor(private router: Router) {}
+     constructor(private router: Router, private authService: AuthService) {}
 
 
     onSubmit(): void {
@@ -33,40 +35,28 @@ export class LoginComponent {
     this.isLoading = true;
     this.errorMessage = '';
 
-    console.log('Отправка данных на сервер:', this.credentials);
+    this.authService.login(this.credentials).subscribe({
 
-    // ЗДЕСЬ БУДЕТ ВЫЗОВ СЕРВИСА АУТЕНТИФИКАЦИИ
-    // this.authService.login(this.credentials).subscribe({
-    //   next: (response) => {
-    //     // Успешный вход
-    //     console.log('Успешный вход!', response);
-    //     // Перенаправляем на главную страницу приложения
-    //     this.router.navigate(['/dashboard']);
-    //   },
-    //   error: (err) => {
-    //     // Ошибка входа
-    //     console.error('Ошибка входа:', err);
-    //     this.errorMessage = 'Неверный логин или пароль. Попробуйте снова.';
-    //     this.isLoading = false;
-    //   },
-    //   complete: () => {
-    //     this.isLoading = false;
-    //   }
-    // });
+        next: (response) => {
+            this.router.navigate(["/graph"])
+        },
 
-    // Имитация задержки ответа от сервера
-    setTimeout(() => {
-        if(this.credentials.username === "admin" && this.credentials.password === "admin") {
-            console.log('Успешный вход (симуляция)!');
-            this.router.navigate(['/dashboard']); 
-        } else {
-            this.errorMessage = 'Неверный логин или пароль (симуляция).';
+        error: (err) => {
+            this.errorMessage = "Неверный логин или пароль. Попробуйте снова"
+            this.isLoading = false;
+        },
+
+        complete: () => {
+            this.isLoading = false;
         }
-        this.isLoading = false;
-    }, 1500);
+    });
+
+   
   }
 
-
+  onRegister(): void {
+      this.router.navigate(['/register']);
+    }
 
 
 }

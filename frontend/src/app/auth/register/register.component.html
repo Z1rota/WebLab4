@@ -55,14 +55,14 @@
       </div>
 
      
-      <button type="submit" class="main-btn" [disabled]="registerForm.invalid">
+      <button type="submit" class="main-btn" [disabled]="registerForm.invalid || isLoading">
         {{ isLoading ? 'Регистрация...' : 'Зарегистрироваться' }}
       </button>
 
       
 
-    <div class="separator" >У вас уже есть аккаунт?&nbsp;
-        <a href="/login">Войти</a> 
+    <div class="separator" >У вас уже есть аккаунт?&nbsp; 
+    <a routerLink="/login">Войти</a> 
     </div>
     
 
