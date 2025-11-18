@@ -1,5 +1,6 @@
 package org.ziro.backend.service;
 
+import jakarta.ejb.Stateless;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.core.Response;
@@ -17,6 +18,11 @@ public class UserService {
     private final UserRepository userRepository;
     private final PasswordHasher passwordHasher;
 
+    public UserService() {
+        this.userRepository = null;
+        this.passwordHasher = null;
+    }
+
     @Inject
     public UserService(UserRepository userRepository, PasswordHasher passwordHasher) {
         this.userRepository = userRepository;
@@ -25,16 +31,21 @@ public class UserService {
 
 
     public boolean login(String username, String password) {
-        Users user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new UserNotFoundException(Response.Status.NOT_FOUND,username));
-        return passwordHasher.verifyPassword(password,user.getPassword());
+        var userOptional = userRepository.findByUsername(username);
 
+
+        if (userOptional.isPresent()) {
+            Users user = userOptional.get();
+            return passwordHasher.verifyPassword(password, user.getPassword());
+        }
+
+        return false;
     }
 
     public boolean register(String username, String password) {
         boolean user = userRepository.existsByUsername(username);
         if (!user) {
-            throw new UserAlreadyExistsException(Response.Status.BAD_REQUEST, "Это имя уже занято");
+            return false;
         }
         String hashed = passwordHasher.hashPassword(password);
         userRepository.save(new Users(username, hashed));
