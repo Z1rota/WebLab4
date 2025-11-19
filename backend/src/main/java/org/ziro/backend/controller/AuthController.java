@@ -38,10 +38,10 @@ public class AuthController {
                 return Response.ok(new TokenResponse(token)).build();
             } else {
                 System.out.println("Ошибка");
-                return Response.status(Response.Status.UNAUTHORIZED).build();
+                return Response.status(Response.Status.BAD_REQUEST).build();
             }
         } catch (UserNotFoundException e ) {
-            return Response.status(Response.Status.UNAUTHORIZED).build();
+            return Response.status(Response.Status.BAD_REQUEST).build();
 
         } catch (Exception e) {
             e.printStackTrace();
