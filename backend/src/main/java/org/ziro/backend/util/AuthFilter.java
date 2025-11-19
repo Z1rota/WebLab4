@@ -48,7 +48,7 @@ public class AuthFilter implements ContainerRequestFilter {
                 requestContext.setSecurityContext(new SecurityContext() {
                     @Override
                     public Principal getUserPrincipal() {
-                        // Возвращаем объект Principal с нашим именем
+
                         return new Principal() {
                             @Override
                             public String getName() {

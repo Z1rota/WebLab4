@@ -1,5 +1,8 @@
 package org.ziro.backend.util;
 
+import jakarta.enterprise.context.ApplicationScoped;
+
+@ApplicationScoped
 public class HitChecker {
 
     public boolean isHit(double x, double y, double r) {

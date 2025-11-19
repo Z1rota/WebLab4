@@ -13,10 +13,10 @@ public class Point {
     private double x;
     private double y;
     private double r;
-    public boolean isHit;
-    public String startTime;
-    public double executionTime;
-    public String creator;
+    private boolean isHit;
+    private String startTime;
+    private double executionTime;
+    private String creator;
 
     public Point() {}
 
@@ -53,6 +53,31 @@ public class Point {
     }
     public void setId(long id) {
         this.id = id;
+    }
+
+    public boolean isHit() {
+        return isHit;
+    }
+    public void setHit(boolean hit) {
+        isHit = hit;
+    }
+    public String getStartTime() {
+        return startTime;
+    }
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+    public double getExecutionTime() {
+        return executionTime;
+    }
+    public void setExecutionTime(double executionTime) {
+        this.executionTime = executionTime;
+    }
+    public String getCreator() {
+        return creator;
+    }
+    public void setCreator(String creator) {
+        this.creator = creator;
     }
 
 
